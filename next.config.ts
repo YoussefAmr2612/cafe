@@ -1,20 +1,16 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
-  reactStrictMode: true,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: false,
-  },
+  output: 'export',
+  basePath: '/cafe',
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'picsum.photos',
         port: '',
-        pathname: '/**', // This allows any path under the hostname
+        pathname: '/**',
       },
       {
         protocol: 'https',
@@ -23,6 +19,13 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       }
     ],
+  },
+  reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: false,
   },
 };
 
