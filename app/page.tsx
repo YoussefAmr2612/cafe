@@ -19,7 +19,7 @@ const COFFEES = [
     category: 'Espresso',
     description: 'Double shot of our signature house blend with micro-foam and a hint of vanilla.',
     price: '$5.50',
-    image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&q=80&w=600'
+    image: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=600'
   },
   {
     id: 15,
@@ -43,7 +43,7 @@ const COFFEES = [
     category: 'Cold Brew',
     description: 'Slow-drip cold coffee, drop-by-drop for 12 hours. Pure clarity.',
     price: '$7.50',
-    image: 'https://images.unsplash.com/photo-1495474472205-51f7d4c0c169?auto=format&fit=crop&q=80&w=600'
+    image: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=600'
   },
   {
     id: 5,
@@ -51,7 +51,7 @@ const COFFEES = [
     category: 'Specialty',
     description: 'Honey-sweetened latte infused with culinary lavender and oat milk.',
     price: '$6.25',
-    image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&q=80&w=600'
+    image: 'https://images.unsplash.com/photo-1593967858208-67ddb5b4c406?auto=format&fit=crop&q=80&w=600'
   },
   {
     id: 14,
@@ -75,10 +75,9 @@ const COFFEES = [
     category: 'Tea',
     description: 'Earl Grey tea latte with hints of lavender and a touch of vanilla syrup.',
     price: '$5.00',
-    image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&q=80&w=600'
+    image: 'https://images.unsplash.com/photo-1544787210-2211d7c86bcc?auto=format&fit=crop&q=80&w=600'
   }
 ];
-
 const CATEGORIES = ['All', 'Espresso', 'Cold Brew', 'Specialty', 'Tea'];
 
 export default function CafePage() {
@@ -95,30 +94,29 @@ export default function CafePage() {
 
   return (
     <div className="relative min-h-screen selection:bg-[#4d8b31] selection:text-[#fcfaf9] transition-colors duration-300">
-      
+
       {/* HERO SECTION */}
-      {/* ... previous code remains the same ... */}
-      <section id="home" className="relative h-screen w-full bg-[#fcfaf9] dark:bg-[#000000] flex items-center justify-center overflow-hidden transition-colors duration-300">
+      <section id="home" className="relative h-screen w-full animated-gradient flex items-center justify-center overflow-hidden transition-colors duration-300">
         {/* Video Background */}
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          className="absolute inset-0 w-full h-full object-cover opacity-20 dark:opacity-40 mix-blend-multiply dark:mix-blend-lighten pointer-events-none"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-10 dark:opacity-30 mix-blend-multiply dark:mix-blend-lighten pointer-events-none"
         >
           <source src="https://assets.mixkit.co/videos/preview/mixkit-coffee-maker-making-coffee-2878-large.mp4" type="video/mp4" />
         </video>
-        
+
         {/* Map / Compass Visual Overlay */}
         <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-5 dark:opacity-10 text-[#000000] dark:text-[#f3d3bd]">
           {/* Abstract Topographical / Radar SVG */}
-          <motion.svg 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 2 }}
-            className="w-[120vw] h-[120vw] md:w-[80vw] md:h-[80vw]" 
-            viewBox="0 0 800 800" 
+          <motion.svg
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1.1, rotate: 360 }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            className="w-[120vw] h-[120vw] md:w-[80vw] md:h-[80vw]"
+            viewBox="0 0 800 800"
             xmlns="http://www.w3.org/2000/svg"
           >
             <circle cx="400" cy="400" r="350" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4 12" />
@@ -133,12 +131,12 @@ export default function CafePage() {
 
         {/* Floating coordinates */}
         <div className="absolute inset-0 pointer-events-none p-6 pt-28 pb-12 md:p-12 md:pt-32 md:pb-24 flex flex-col justify-between z-10 text-[#000000]/60 dark:text-[#fcfaf9]/40 font-mono text-xs tracking-[0.2em]">
-          <motion.div initial={{opacity:0, filter: 'blur(8px)'}} animate={{opacity:1, filter: 'blur(0px)'}} transition={{delay:0.2, duration: 1}} className="hidden md:block">
+          <motion.div initial={{opacity:0, x: -20}} animate={{opacity:1, x: 0}} transition={{delay:0.2, duration: 1}} className="hidden md:block">
             ACTUAL POSITION <br/>
             {`LAT: 04°35'23.1"N`} <br/>
             {`LONG: 74°04'51.2"W`}
           </motion.div>
-          <motion.div initial={{opacity:0, filter: 'blur(8px)'}} animate={{opacity:1, filter: 'blur(0px)'}} transition={{delay:0.3, duration: 1}} className="self-end text-right hidden md:block mt-auto">
+          <motion.div initial={{opacity:0, x: 20}} animate={{opacity:1, x: 0}} transition={{delay:0.3, duration: 1}} className="self-end text-right hidden md:block mt-auto">
             ELEVATION: 1,800M <br/>
             REGION: COLOMBIA <br/>
             NOTES: CITRUS & JASMINE
@@ -146,44 +144,52 @@ export default function CafePage() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center mt-24 md:mt-32 text-[#000000] dark:text-[#fcfaf9]">
-          <motion.div 
-            initial={{ opacity: 0, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, filter: 'blur(0px)' }}
-            transition={{ delay: 0.1, duration: 0.8 }}
+          <motion.div
+            animate={{ 
+              y: [0, -15, 0],
+              rotate: [0, 5, -5, 0]
+            }}
+            transition={{ 
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
             className="flex justify-center mb-8"
           >
             <Compass size={40} className="text-[#4d8b31]" strokeWidth={1} />
           </motion.div>
-          <motion.p 
-            initial={{ opacity: 0, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, filter: 'blur(0px)' }}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-sm md:text-base font-sans tracking-[0.3em] uppercase text-[#4d8b31] dark:text-[#f3d3bd] mb-6 font-semibold"
           >
             Trace your origin
           </motion.p>
-          <motion.h1 
-            initial={{ opacity: 0, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, filter: 'blur(0px)' }}
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 1 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-display tracking-tighter font-extrabold mb-8 leading-none"
+            className="text-6xl md:text-8xl lg:text-9xl font-display tracking-tighter font-extrabold mb-8 leading-none drop-shadow-sm"
           >
             Map<br />
-            Y<span className="text-[#4d8b31]">o</span>ur Br<span className="font-sans font-light italic text-[#000000]/60 dark:text-[#fcfaf9]/80">e</span>w.
+            Y<motion.span 
+              animate={{ color: ["#4d8b31", "#f3d3bd", "#4d8b31"] }}
+              transition={{ duration: 4, repeat: Infinity }}
+            >o</motion.span>ur Br<span className="font-sans font-light italic text-[#000000]/60 dark:text-[#fcfaf9]/80">e</span>w.
           </motion.h1>
           <motion.div
-            initial={{ opacity: 0, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, filter: 'blur(0px)' }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 1 }}
             className="mb-12 md:mb-24"
           >
-            <a href="#about" className="inline-flex items-center gap-3 border border-[#000000]/30 dark:border-[#fcfaf9]/30 px-8 py-4 rounded-full text-sm font-medium hover:bg-[#f3d3bd] hover:text-[#000000] hover:border-[#f3d3bd] transition-all duration-300">
+            <a href="#about" className="inline-flex items-center gap-3 border border-[#000000]/30 dark:border-[#fcfaf9]/30 px-8 py-4 rounded-full text-sm font-medium bg-[#fcfaf9]/50 dark:bg-[#000000]/50 backdrop-blur-md hover:bg-[#f3d3bd] hover:text-[#000000] hover:border-[#f3d3bd] transition-all duration-300 shadow-lg">
               Start the journey <Navigation size={16} className="-rotate-45" />
             </a>
           </motion.div>
         </div>
       </section>
-
       {/* ABOUT SECTION (Golden Brown / Dark Context) */}
       <section id="about" className="relative py-32 px-6 bg-[#f3d3bd] dark:bg-[#1f1611] text-[#000000] dark:text-[#fcfaf9] overflow-hidden transition-colors duration-300">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
@@ -227,12 +233,12 @@ export default function CafePage() {
             <h3 className="font-display text-5xl md:text-7xl tracking-tighter font-bold">Our Canvas.</h3>
           </div>
 
-          <div className="flex flex-wrap gap-2 overflow-x-auto pb-2 scrollbar-hide">
+          <div className="flex md:flex-wrap flex-nowrap gap-2 overflow-x-auto pb-4 md:pb-2 scrollbar-hide">
             {CATEGORIES.map(cat => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-6 py-2 rounded-full text-[10px] tracking-widest uppercase font-bold transition-all border ${
+                className={`px-6 py-2 rounded-full text-[10px] tracking-widest uppercase font-bold transition-all border whitespace-nowrap ${
                   activeCategory === cat 
                     ? 'bg-[#000000] dark:bg-[#fcfaf9] border-[#000000] dark:border-[#fcfaf9] text-[#fcfaf9] dark:text-[#000000]' 
                     : 'bg-transparent border-[#000000]/10 dark:border-[#fcfaf9]/10 text-[#000000]/40 dark:text-[#fcfaf9]/40 hover:border-[#4d8b31] hover:text-[#4d8b31]'
@@ -247,7 +253,7 @@ export default function CafePage() {
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <motion.div 
             layout
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12"
+            className="flex md:grid md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-x-6 md:gap-y-12 overflow-x-auto md:overflow-visible pb-8 md:pb-0 scrollbar-hide"
           >
             {filteredCoffees.map((item) => (
               <motion.div 
@@ -256,7 +262,7 @@ export default function CafePage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="group flex flex-col"
+                className="group flex flex-col min-w-[280px] md:min-w-0"
               >
                 <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden bg-[#f3d3bd]/20 dark:bg-[#1a120e] mb-4">
                   <Image 

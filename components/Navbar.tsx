@@ -33,7 +33,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-12 flex justify-between items-center transition-all duration-300 ${
+      <nav className={`fixed top-0 left-0 right-0 xl:right-[384px] z-50 px-6 md:px-12 flex justify-between items-center transition-all duration-300 ${
         isScrolled 
           ? isHome 
             ? 'bg-[#000000]/60 dark:bg-[#000000]/80 backdrop-blur-md text-[#fcfaf9] py-4 shadow-sm' 
@@ -111,59 +111,62 @@ export default function Navbar() {
         )}
       </AnimatePresence>
       
-      {/* Cart Sidebar Placeholder (Cart drawer) */}
-      <AnimatePresence>
-        {isCartOpen && (
-          <>
+      {/* Cart Sidebar (Persistent on Desktop, Drawer on Mobile) */}
+      <div className="fixed inset-0 pointer-events-none z-[60]">
+        <AnimatePresence>
+          {isCartOpen && (
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsCartOpen(false)}
-              className="fixed inset-0 z-[60] bg-[#000000]/20 backdrop-blur-sm"
+              className="absolute inset-0 bg-[#000000]/20 backdrop-blur-sm pointer-events-auto xl:hidden"
             />
-            <motion.div 
-              initial={{ x: '100%', filter: 'blur(8px)' }}
-              animate={{ x: 0, filter: 'blur(0px)' }}
-              exit={{ x: '100%', filter: 'blur(8px)' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-[#fcfaf9] dark:bg-[#0f0f0f] text-[#000000] dark:text-[#fcfaf9] z-[70] shadow-2xl flex flex-col border-l border-[#000000]/5 dark:border-[#fcfaf9]/10"
-            >
-              <div className="flex items-center justify-between p-6 border-b border-[#000000]/10 dark:border-[#fcfaf9]/10">
-                <h2 className="font-display text-2xl font-bold">Your Order</h2>
-                <button onClick={() => setIsCartOpen(false)} className="hover:text-[#4d8b31] transition-colors"><X size={24} /></button>
-              </div>
-              
-              <div className="flex-grow overflow-y-auto p-6 space-y-6">
-                {cartItems.length === 0 ? (
-                  <p className="text-[#000000]/50 dark:text-[#fcfaf9]/50 font-mono text-sm tracking-widest uppercase text-center mt-10">Cart is empty</p>
-                ) : (
-                  cartItems.map((item) => (
-                    <div key={item.product.id} className="flex gap-4">
-                      <div className="relative w-20 h-20 rounded-xl overflow-hidden bg-[#f3d3bd]/30 shrink-0">
-                        <Image src={item.product.image} alt={item.product.name} fill className="object-cover" referrerPolicy="no-referrer" />
-                      </div>
-                      <div className="flex-grow">
-                        <h3 className="font-display font-medium text-lg leading-tight mb-1">{item.product.name}</h3>
-                        <p className="text-[#000000]/50 dark:text-[#fcfaf9]/50 text-sm mb-2">{item.product.price} x {item.quantity}</p>
-                      </div>
-                      <button onClick={() => removeFromCart(item.product.id)} className="text-[#000000]/40 dark:text-[#fcfaf9]/40 hover:text-red-500 transition-colors self-start p-1">
-                        <Trash2 size={16} />
-                      </button>
-                    </div>
-                  ))
-                )}
-              </div>
+          )}
+        </AnimatePresence>
 
-              <div className="p-6 border-t border-[#000000]/10 dark:border-[#fcfaf9]/10 bg-[#fcfaf9] dark:bg-[#0f0f0f]">
-                <button className="w-full bg-[#000000] dark:bg-[#fcfaf9] text-[#fcfaf9] dark:text-[#000000] hover:bg-[#4d8b31] dark:hover:bg-[#4d8b31] dark:hover:text-[#fcfaf9] transition-colors py-4 rounded-full font-medium shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed" disabled={cartItems.length === 0}>
-                  Checkout
-                </button>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+        <motion.div 
+          initial={false}
+          animate={{ 
+            x: mounted ? (isCartOpen || (window.innerWidth >= 1280) ? 0 : '100%') : '100%',
+            filter: isCartOpen || (mounted && window.innerWidth >= 1280) ? 'blur(0px)' : 'blur(8px)'
+          }}
+          transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+          className="absolute top-0 right-0 bottom-0 w-full max-w-sm bg-[#fcfaf9] dark:bg-[#0f0f0f] text-[#000000] dark:text-[#fcfaf9] z-[70] shadow-2xl xl:shadow-none flex flex-col border-l border-[#000000]/5 dark:border-[#fcfaf9]/10 pointer-events-auto"
+        >
+          <div className="flex items-center justify-between p-6 border-b border-[#000000]/10 dark:border-[#fcfaf9]/10">
+            <h2 className="font-display text-2xl font-bold">Your Order</h2>
+            <button onClick={() => setIsCartOpen(false)} className="hover:text-[#4d8b31] transition-colors xl:hidden"><X size={24} /></button>
+          </div>
+          
+          <div className="flex-grow overflow-y-auto p-6 space-y-6">
+            {cartItems.length === 0 ? (
+              <p className="text-[#000000]/50 dark:text-[#fcfaf9]/50 font-mono text-sm tracking-widest uppercase text-center mt-10">Cart is empty</p>
+            ) : (
+              cartItems.map((item) => (
+                <div key={item.product.id} className="flex gap-4">
+                  <div className="relative w-20 h-20 rounded-xl overflow-hidden bg-[#f3d3bd]/30 shrink-0">
+                    <Image src={item.product.image} alt={item.product.name} fill className="object-cover" referrerPolicy="no-referrer" />
+                  </div>
+                  <div className="flex-grow">
+                    <h3 className="font-display font-medium text-lg leading-tight mb-1">{item.product.name}</h3>
+                    <p className="text-[#000000]/50 dark:text-[#fcfaf9]/50 text-sm mb-2">{item.product.price} x {item.quantity}</p>
+                  </div>
+                  <button onClick={() => removeFromCart(item.product.id)} className="text-[#000000]/40 dark:text-[#fcfaf9]/40 hover:text-red-500 transition-colors self-start p-1">
+                    <Trash2 size={16} />
+                  </button>
+                </div>
+              ))
+            )}
+          </div>
+
+          <div className="p-6 border-t border-[#000000]/10 dark:border-[#fcfaf9]/10 bg-[#fcfaf9] dark:bg-[#0f0f0f]">
+            <button className="w-full bg-[#000000] dark:bg-[#fcfaf9] text-[#fcfaf9] dark:text-[#000000] hover:bg-[#4d8b31] dark:hover:bg-[#4d8b31] dark:hover:text-[#fcfaf9] transition-colors py-4 rounded-full font-medium shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed" disabled={cartItems.length === 0}>
+              Checkout
+            </button>
+          </div>
+        </motion.div>
+      </div>
     </>
   );
 }
