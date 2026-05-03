@@ -208,12 +208,12 @@ export default function OrderPage() {
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2 mt-12 overflow-x-auto pb-4 scrollbar-hide">
+          <div className="flex md:flex-wrap flex-nowrap gap-2 mt-12 overflow-x-auto pb-4 scrollbar-hide">
             {CATEGORIES.map(cat => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-8 py-2.5 rounded-full text-xs tracking-widest uppercase font-bold transition-all border ${
+                className={`px-8 py-2.5 rounded-full text-xs tracking-widest uppercase font-bold transition-all border whitespace-nowrap ${
                   activeCategory === cat 
                     ? 'bg-[#000000] dark:bg-[#fcfaf9] border-[#000000] dark:border-[#fcfaf9] text-[#fcfaf9] dark:text-[#000000]' 
                     : 'bg-transparent border-[#000000]/10 dark:border-[#fcfaf9]/10 text-[#000000]/40 dark:text-[#fcfaf9]/40 hover:border-[#4d8b31] hover:text-[#4d8b31]'
@@ -234,7 +234,7 @@ export default function OrderPage() {
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-y-12 gap-x-6"
+              className="flex md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-y-12 overflow-x-auto md:overflow-visible pb-12 md:pb-0 scrollbar-hide"
             >
               {filteredProducts.map((product) => (
                 <motion.div 
@@ -244,7 +244,7 @@ export default function OrderPage() {
                   animate={{ opacity: 1, scale: 1 }}
                   onMouseEnter={() => setHoveredProduct(product.id)}
                   onMouseLeave={() => setHoveredProduct(null)}
-                  className="relative group flex flex-col border-r border-b border-[#000000]/5 dark:border-[#fcfaf9]/5 p-4 -m-4 transition-colors hover:bg-[#f3d3bd]/10 dark:hover:bg-[#f3d3bd]/5"
+                  className="relative group flex flex-col border-r border-b border-[#000000]/5 dark:border-[#fcfaf9]/5 p-4 transition-colors hover:bg-[#f3d3bd]/10 dark:hover:bg-[#f3d3bd]/5 min-w-[280px] md:min-w-0"
                 >
                   <div className="relative w-full aspect-[16/9] rounded-lg overflow-hidden bg-[#f3d3bd]/20 dark:bg-[#fcfaf9]/5 mb-4 group-hover:shadow-2xl transition-all duration-500">
                     <Image

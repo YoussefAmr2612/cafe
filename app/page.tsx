@@ -233,12 +233,12 @@ export default function CafePage() {
             <h3 className="font-display text-5xl md:text-7xl tracking-tighter font-bold">Our Canvas.</h3>
           </div>
 
-          <div className="flex flex-wrap gap-2 overflow-x-auto pb-2 scrollbar-hide">
+          <div className="flex md:flex-wrap flex-nowrap gap-2 overflow-x-auto pb-4 md:pb-2 scrollbar-hide">
             {CATEGORIES.map(cat => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-6 py-2 rounded-full text-[10px] tracking-widest uppercase font-bold transition-all border ${
+                className={`px-6 py-2 rounded-full text-[10px] tracking-widest uppercase font-bold transition-all border whitespace-nowrap ${
                   activeCategory === cat 
                     ? 'bg-[#000000] dark:bg-[#fcfaf9] border-[#000000] dark:border-[#fcfaf9] text-[#fcfaf9] dark:text-[#000000]' 
                     : 'bg-transparent border-[#000000]/10 dark:border-[#fcfaf9]/10 text-[#000000]/40 dark:text-[#fcfaf9]/40 hover:border-[#4d8b31] hover:text-[#4d8b31]'
@@ -253,7 +253,7 @@ export default function CafePage() {
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <motion.div 
             layout
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12"
+            className="flex md:grid md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-x-6 md:gap-y-12 overflow-x-auto md:overflow-visible pb-8 md:pb-0 scrollbar-hide"
           >
             {filteredCoffees.map((item) => (
               <motion.div 
@@ -262,7 +262,7 @@ export default function CafePage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="group flex flex-col"
+                className="group flex flex-col min-w-[280px] md:min-w-0"
               >
                 <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden bg-[#f3d3bd]/20 dark:bg-[#1a120e] mb-4">
                   <Image 
