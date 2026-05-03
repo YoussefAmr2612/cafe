@@ -1,23 +1,46 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Cafe ☕
 
-# Run and deploy your AI Studio app
+A modern, AI-powered application built with Next.js and Google Gemini.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/3144065e-1287-44bc-8399-4aba0eb17e53
+- **AI-Powered Interactions:** Leveraging the Google Gemini API for intelligent responses.
+- **Modern UI:** Built with Tailwind CSS for a sleek and responsive design.
+- **Fast Performance:** Optimized with Next.js.
 
-## Run Locally
+## Getting Started
 
-**Prerequisites:**  Node.js
+### Prerequisites
 
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/YoussefAmr2612/cafe.git
+   cd cafe
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Configure environment variables:
+   - Create a `.env.local` file in the root directory.
+   - Add your Gemini API key:
+     ```env
+     GEMINI_API_KEY=your_api_key_here
+     ```
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Technologies Used
 
@@ -25,3 +48,11 @@ View your app in AI Studio: https://ai.studio/apps/3144065e-1287-44bc-8399-4aba0
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 - **AI Integration:** [Google Gemini API](https://ai.google.dev/)
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License.
