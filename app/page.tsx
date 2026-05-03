@@ -19,7 +19,7 @@ const COFFEES = [
     category: 'Espresso',
     description: 'Double shot of our signature house blend with micro-foam and a hint of vanilla.',
     price: '$5.50',
-    image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&q=80&w=600'
+    image: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=600'
   },
   {
     id: 15,
@@ -43,7 +43,7 @@ const COFFEES = [
     category: 'Cold Brew',
     description: 'Slow-drip cold coffee, drop-by-drop for 12 hours. Pure clarity.',
     price: '$7.50',
-    image: 'https://images.unsplash.com/photo-1495474472205-51f7d4c0c169?auto=format&fit=crop&q=80&w=600'
+    image: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=600'
   },
   {
     id: 5,
@@ -51,7 +51,7 @@ const COFFEES = [
     category: 'Specialty',
     description: 'Honey-sweetened latte infused with culinary lavender and oat milk.',
     price: '$6.25',
-    image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&q=80&w=600'
+    image: 'https://images.unsplash.com/photo-1593967858208-67ddb5b4c406?auto=format&fit=crop&q=80&w=600'
   },
   {
     id: 14,
@@ -75,10 +75,9 @@ const COFFEES = [
     category: 'Tea',
     description: 'Earl Grey tea latte with hints of lavender and a touch of vanilla syrup.',
     price: '$5.00',
-    image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&q=80&w=600'
+    image: 'https://images.unsplash.com/photo-1544787210-2211d7c86bcc?auto=format&fit=crop&q=80&w=600'
   }
 ];
-
 const CATEGORIES = ['All', 'Espresso', 'Cold Brew', 'Specialty', 'Tea'];
 
 export default function CafePage() {

@@ -16,7 +16,7 @@ const PRODUCTS = [
     category: 'Espresso',
     description: 'Double shot of our signature house blend with micro-foam and a hint of vanilla.',
     price: '$5.50',
-    image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&q=80&w=600'
+    image: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=600'
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const PRODUCTS = [
     category: 'Espresso',
     description: 'Bright and floral notes with a silky body and a citrus finish.',
     price: '$4.00',
-    image: 'https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&q=80&w=600'
+    image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=600'
   },
   {
     id: 3,
@@ -40,7 +40,7 @@ const PRODUCTS = [
     category: 'Specialty',
     description: 'Coffee cherry tea infused with tonic water and a twist of dehydrated orange.',
     price: '$6.50',
-    image: 'https://images.unsplash.com/photo-1515823662972-da6a2e4d3002?auto=format&fit=crop&q=80&w=600'
+    image: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=600'
   },
   {
     id: 5,
@@ -48,7 +48,7 @@ const PRODUCTS = [
     category: 'Specialty',
     description: 'Honey-sweetened latte infused with culinary lavender and oat milk.',
     price: '$6.25',
-    image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&q=80&w=600'
+    image: 'https://images.unsplash.com/photo-1593967858208-67ddb5b4c406?auto=format&fit=crop&q=80&w=600'
   },
   {
     id: 6,
@@ -56,7 +56,7 @@ const PRODUCTS = [
     category: 'Cold Brew',
     description: 'Our signature cold brew infused with nitrogen for a creamy, stout-like texture.',
     price: '$5.50',
-    image: 'https://images.unsplash.com/photo-1507133750070-4edadd9222a0?auto=format&fit=crop&q=80&w=600'
+    image: 'https://images.unsplash.com/photo-1512568400610-62da28bc8a13?auto=format&fit=crop&q=80&w=600'
   },
   {
     id: 7,
@@ -72,7 +72,7 @@ const PRODUCTS = [
     category: 'Tea',
     description: 'Earl Grey tea latte with hints of lavender and a touch of vanilla syrup.',
     price: '$5.00',
-    image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&q=80&w=600'
+    image: 'https://images.unsplash.com/photo-1544787210-2211d7c86bcc?auto=format&fit=crop&q=80&w=600'
   },
   {
     id: 9,
@@ -104,7 +104,7 @@ const PRODUCTS = [
     category: 'Pastries',
     description: 'Traditional Swedish-style bun with a heavy cardamom crust.',
     price: '$4.50',
-    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=600'
+    image: 'https://images.unsplash.com/photo-1586333240439-ad152917f692?auto=format&fit=crop&q=80&w=600'
   },
   {
     id: 13,
@@ -146,6 +146,7 @@ const PRODUCTS = [
     price: '$8.00',
     image: 'https://images.unsplash.com/photo-1502741224143-90386d7f8c82?auto=format&fit=crop&q=80&w=600'
   },
+
   {
     id: 18,
     name: 'Citrus Espresso Tonic',
