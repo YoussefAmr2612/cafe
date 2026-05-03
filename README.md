@@ -18,3 +18,10 @@ View your app in AI Studio: https://ai.studio/apps/3144065e-1287-44bc-8399-4aba0
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+
+## Technologies Used
+
+- **Framework:** [Next.js](https://nextjs.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **AI Integration:** [Google Gemini API](https://ai.google.dev/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
