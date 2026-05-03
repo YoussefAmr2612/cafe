@@ -94,30 +94,29 @@ export default function CafePage() {
 
   return (
     <div className="relative min-h-screen selection:bg-[#4d8b31] selection:text-[#fcfaf9] transition-colors duration-300">
-      
+
       {/* HERO SECTION */}
-      {/* ... previous code remains the same ... */}
-      <section id="home" className="relative h-screen w-full bg-[#fcfaf9] dark:bg-[#000000] flex items-center justify-center overflow-hidden transition-colors duration-300">
+      <section id="home" className="relative h-screen w-full animated-gradient flex items-center justify-center overflow-hidden transition-colors duration-300">
         {/* Video Background */}
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          className="absolute inset-0 w-full h-full object-cover opacity-20 dark:opacity-40 mix-blend-multiply dark:mix-blend-lighten pointer-events-none"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-10 dark:opacity-30 mix-blend-multiply dark:mix-blend-lighten pointer-events-none"
         >
           <source src="https://assets.mixkit.co/videos/preview/mixkit-coffee-maker-making-coffee-2878-large.mp4" type="video/mp4" />
         </video>
-        
+
         {/* Map / Compass Visual Overlay */}
         <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-5 dark:opacity-10 text-[#000000] dark:text-[#f3d3bd]">
           {/* Abstract Topographical / Radar SVG */}
-          <motion.svg 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 2 }}
-            className="w-[120vw] h-[120vw] md:w-[80vw] md:h-[80vw]" 
-            viewBox="0 0 800 800" 
+          <motion.svg
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1.1, rotate: 360 }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            className="w-[120vw] h-[120vw] md:w-[80vw] md:h-[80vw]"
+            viewBox="0 0 800 800"
             xmlns="http://www.w3.org/2000/svg"
           >
             <circle cx="400" cy="400" r="350" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4 12" />
@@ -132,12 +131,12 @@ export default function CafePage() {
 
         {/* Floating coordinates */}
         <div className="absolute inset-0 pointer-events-none p-6 pt-28 pb-12 md:p-12 md:pt-32 md:pb-24 flex flex-col justify-between z-10 text-[#000000]/60 dark:text-[#fcfaf9]/40 font-mono text-xs tracking-[0.2em]">
-          <motion.div initial={{opacity:0, filter: 'blur(8px)'}} animate={{opacity:1, filter: 'blur(0px)'}} transition={{delay:0.2, duration: 1}} className="hidden md:block">
+          <motion.div initial={{opacity:0, x: -20}} animate={{opacity:1, x: 0}} transition={{delay:0.2, duration: 1}} className="hidden md:block">
             ACTUAL POSITION <br/>
             {`LAT: 04°35'23.1"N`} <br/>
             {`LONG: 74°04'51.2"W`}
           </motion.div>
-          <motion.div initial={{opacity:0, filter: 'blur(8px)'}} animate={{opacity:1, filter: 'blur(0px)'}} transition={{delay:0.3, duration: 1}} className="self-end text-right hidden md:block mt-auto">
+          <motion.div initial={{opacity:0, x: 20}} animate={{opacity:1, x: 0}} transition={{delay:0.3, duration: 1}} className="self-end text-right hidden md:block mt-auto">
             ELEVATION: 1,800M <br/>
             REGION: COLOMBIA <br/>
             NOTES: CITRUS & JASMINE
@@ -145,44 +144,52 @@ export default function CafePage() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center mt-24 md:mt-32 text-[#000000] dark:text-[#fcfaf9]">
-          <motion.div 
-            initial={{ opacity: 0, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, filter: 'blur(0px)' }}
-            transition={{ delay: 0.1, duration: 0.8 }}
+          <motion.div
+            animate={{ 
+              y: [0, -15, 0],
+              rotate: [0, 5, -5, 0]
+            }}
+            transition={{ 
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
             className="flex justify-center mb-8"
           >
             <Compass size={40} className="text-[#4d8b31]" strokeWidth={1} />
           </motion.div>
-          <motion.p 
-            initial={{ opacity: 0, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, filter: 'blur(0px)' }}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-sm md:text-base font-sans tracking-[0.3em] uppercase text-[#4d8b31] dark:text-[#f3d3bd] mb-6 font-semibold"
           >
             Trace your origin
           </motion.p>
-          <motion.h1 
-            initial={{ opacity: 0, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, filter: 'blur(0px)' }}
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 1 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-display tracking-tighter font-extrabold mb-8 leading-none"
+            className="text-6xl md:text-8xl lg:text-9xl font-display tracking-tighter font-extrabold mb-8 leading-none drop-shadow-sm"
           >
             Map<br />
-            Y<span className="text-[#4d8b31]">o</span>ur Br<span className="font-sans font-light italic text-[#000000]/60 dark:text-[#fcfaf9]/80">e</span>w.
+            Y<motion.span 
+              animate={{ color: ["#4d8b31", "#f3d3bd", "#4d8b31"] }}
+              transition={{ duration: 4, repeat: Infinity }}
+            >o</motion.span>ur Br<span className="font-sans font-light italic text-[#000000]/60 dark:text-[#fcfaf9]/80">e</span>w.
           </motion.h1>
           <motion.div
-            initial={{ opacity: 0, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, filter: 'blur(0px)' }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 1 }}
             className="mb-12 md:mb-24"
           >
-            <a href="#about" className="inline-flex items-center gap-3 border border-[#000000]/30 dark:border-[#fcfaf9]/30 px-8 py-4 rounded-full text-sm font-medium hover:bg-[#f3d3bd] hover:text-[#000000] hover:border-[#f3d3bd] transition-all duration-300">
+            <a href="#about" className="inline-flex items-center gap-3 border border-[#000000]/30 dark:border-[#fcfaf9]/30 px-8 py-4 rounded-full text-sm font-medium bg-[#fcfaf9]/50 dark:bg-[#000000]/50 backdrop-blur-md hover:bg-[#f3d3bd] hover:text-[#000000] hover:border-[#f3d3bd] transition-all duration-300 shadow-lg">
               Start the journey <Navigation size={16} className="-rotate-45" />
             </a>
           </motion.div>
         </div>
       </section>
-
       {/* ABOUT SECTION (Golden Brown / Dark Context) */}
       <section id="about" className="relative py-32 px-6 bg-[#f3d3bd] dark:bg-[#1f1611] text-[#000000] dark:text-[#fcfaf9] overflow-hidden transition-colors duration-300">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
